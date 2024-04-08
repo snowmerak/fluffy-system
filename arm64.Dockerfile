@@ -1,4 +1,4 @@
-FROM python:3.12-bookworm
+FROM --platform=linux/arm64 python:3.12-bookworm
 
 COPY . /script
 
