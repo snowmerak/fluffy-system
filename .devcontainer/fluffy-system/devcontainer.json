@@ -1,0 +1,20 @@
+{
+  "name": "fluffy-system",
+  "dockerComposeFile": [
+    "docker-compose.yml"
+  ],
+  "service": "fluffy-system",
+  "workspaceFolder": "/workspace",
+  "shutdownAction": "stopCompose",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "ms-python.python",
+        "ms-python.debugpy",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+version: '3'
+services:
+  fluffy-system:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../../.:/workspace:cached
