@@ -3,15 +3,18 @@ from git import Repo, TagReference
 
 def commit_message_to_semver_vector(message: str) -> tuple[int, int, int]:
     prefix = message.split(': ')[0].strip().lower()
-    print(prefix)
     match prefix:
         case 'feat':
             return (0, 1, 0)
+        case 'docs':
+            return (0, 0, 1)
         case 'break':
             return (1, 0, 0)
         case 'chore':
             return (0, 0, 1)
         case 'fix':
+            return (0, 0, 1)
+        case 'bug':
             return (0, 0, 1)
         case _:
             return (0, 0, 0)
