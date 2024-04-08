@@ -2,12 +2,13 @@ from git import Repo
 
 repo = Repo('.')
 
+last_tag = repo.tags.pop()
 
-last_tag = repo.tags[-1]
+commits: list[str] = []
+for commit in repo.iter_commits():
+    if commit == last_tag.commit:
+        break
+    commits.append(commit.message.strip())
 
-# commits from last tag
-commits = list(repo.iter_commits(rev=last_tag.commit))
-for commit in commits:
-    print(commit.hexsha, commit.message.strip(), commit.author.name)
-
+print(commits)
 
