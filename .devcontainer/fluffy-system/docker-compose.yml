@@ -6,3 +6,26 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ../../.:/workspace:cached
+    environment:
+      - FLUFFY_DB_HOST=localhost
+      - FLUFFY_DB_PORT=3306
+      - FLUFFY_DB_NAME=fluffy
+      - FLUFFY_DB_USER=fluffy
+      - FLUFFY_DB_PASSWORD=fluffy
+    ports:
+      - "8080:8080"
+      - "3306:3306"
+      - "6379:6379"
+  db:
+    image: mysql:8.3.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: fluffy
+      MYSQL_USER: fluffy
+      MYSQL_PASSWORD: fluffy
+    network_mode: service:fluffy-system
+  cache:
+    image: ghcr.io/microsoft/garnet
+    restart: always
+    network_mode: service:fluffy-system

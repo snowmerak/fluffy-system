@@ -1,0 +1,9 @@
+version: "2"
+sql:
+  - engine: "mysql"
+    queries: "versions/query.sql"
+    schema: "versions/schema.sql"
+    gen:
+      go:
+        package: "versions"
+        out: "versions"
